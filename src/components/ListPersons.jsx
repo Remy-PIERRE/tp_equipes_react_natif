@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import React from "react";
 import ButtonDelete from "./ButtonDelete";
+import { PersonsContext } from "../context/Persons";
 
-function ListPersons({ persons, deletePersons }) {
-	const handleDelete = (index) => {
-		deletePersons(index);
+function ListPersons() {
+	const { persons, deletePerson } = useContext(PersonsContext);
+
+	const handleDelete = (personId) => {
+		deletePerson(personId);
 	};
 
 	return (

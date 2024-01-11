@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import ButtonValidate from "./ButtonValidate";
 import { useRef, useState, useEffect } from "react";
 import { isFormCompleted, sanitizeInputValue } from "../utils/checkForm";
 import generateId from "../utils/generateId";
+import { PersonsContext } from "../context/Persons";
+import { TeamsContext } from "../context/Teams";
 
-const AddPerson = ({ teams, addPerson, addPersonToTeam }) => {
+const AddPerson = () => {
+	const { addPerson } = useContext(PersonsContext);
+	const { teams, addPersonToTeam } = useContext(TeamsContext);
+
 	// handling error message when form not ok
 	const [errorMessage, setErrorMessage] = useState(false);
 

@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import ButtonDelete from "./ButtonDelete";
+import { TeamsContext } from "../context/Teams";
+import { PersonsContext } from "../context/Persons";
 
-const ListTeams = ({ teams, persons, deleteTeam }) => {
+const ListTeams = () => {
+	const { teams, deleteTeam } = useContext(TeamsContext);
+	const { getPerson } = useContext(PersonsContext);
+
 	const handleDelete = (id) => {
 		deleteTeam(id);
 	};
 
-	const getPerson = (personId) => {
-		return persons.find((person) => person.id === personId);
-	};
+	// const getPerson = (personId) => {
+	// 	return persons.find((person) => person.id === personId);
+	// };
 
 	return (
 		<section className="section--container listTeams--container">
